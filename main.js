@@ -41,7 +41,6 @@ function convert(ms) {
     let m = 0
     let s = 0
     let h = 0
-    console.log(ms)
     while(ms >= 1000) {
         ms -= 1000
         s += 1
@@ -60,7 +59,6 @@ function convert(ms) {
 
 function format(arr) {
     let output = []
-
     arr.forEach(value => {
         let str = value.toString()
         if(str.length < 2) {
@@ -74,6 +72,5 @@ function format(arr) {
         output[3] = 0 + ms
         ms = output[3]
     }
-
     return `${output[0]}:${output[1]}:${output[2]}.${output[3]}`
 }
