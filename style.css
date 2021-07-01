@@ -6,9 +6,10 @@
 
 body {
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     justify-content: center;
     align-items: center;
+    align-content: top;
     height: 100vh;
 }
 
@@ -26,6 +27,7 @@ p {
     padding: 1em;
     border-radius: 12px;
     background-color: rgb(177, 177, 177);
+    margin: 0 2em;
 }
 
 .stop-watch h2 {
@@ -47,4 +49,24 @@ p {
 button {
     padding: 0.5em;
     font-weight: bold;
+}
+
+#reset {
+    grid-area: 4 / 1 / span 1 / span 3;
+}
+
+#laps {
+    display: flex;
+    align-content: center;
+    flex-flow: column-reverse;
+}
+
+#laps article {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.25);
+    font-size: 0.35rem;
+    margin-top: 1em;
+    padding: 2em;
+
 }

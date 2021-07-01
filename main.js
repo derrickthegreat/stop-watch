@@ -1,29 +1,51 @@
 let time = 0
+
+let lapNumber = 0
 let state
 let interval
 
 const startButton = document.getElementById('start')
 const stopButton = document.getElementById('stop')
+const lapButton = document.getElementById('lap')
 const resetButton = document.getElementById('reset')
 const displayElement = document.getElementById('display')
+const lapElement = document.getElementById('laps')
 
-displayElement.innerText = convert(time)
+displayElement.innerText = convert(0)
+lapButton.disable = true
 
 startButton.addEventListener('click', () => {
     state = true
-    interval = setInterval(timer)
+    interval = setInterval(timer, 1000)
     startButton.disabled = true
+    lapButton.disabled = false
 })
 stopButton.addEventListener('click', () => {
     state = null
     interval = null
     startButton.disabled = false
+    lapButton.disable = true
 })
+
+lapButton.addEventListener('click', () => {
+    lap = convert(time)
+    time = 0
+    let newLap = lapMaker(lap)
+    console.log(newLap)
+    lapElement.appendChild(newLap)
+})
+
 
 resetButton.addEventListener('click', () => {
     time = 0
+    interval = null
+    state = null
     displayElement.innerText = convert(0)
     startButton.disabled = false
+    lapButton.disable = true
+    while(lapElement.firstChild) {
+        lapElement.removeChild(lapElement.firstChild)
+    }
 })
 
 
@@ -38,14 +60,10 @@ function timer() {
 }
 
 function convert(ms) {
-    let m = 0
-    let s = 0
     let h = 0
-    while(ms >= 1000) {
-        ms -= 1000
-        s += 1
-    }
-    while(s >= 60) {
+    let m = 0
+    let s = ms
+    while(s >= 1000) {
         s -= 60
         m += 1
     }
@@ -67,10 +85,17 @@ function format(arr) {
             output.push(str)
         }
     })
-    let ms = output[3]
-    while(ms.length < 3) {
-        output[3] = 0 + ms
-        ms = output[3]
-    }
-    return `${output[0]}:${output[1]}:${output[2]}.${output[3]}`
+    return `${output[0]}:${output[1]}:${output[2]}`
+}
+
+function lapMaker(elapsedTime) {
+    let article = document.createElement('article')
+    let lap = document.createElement('p')
+    let time = document.createElement('p')
+    lapNumber++
+    time.innerText = elapsedTime
+    lap.innerText = `Lap #${lapNumber}:`
+    article.appendChild(lap)
+    article.appendChild(time)
+    return article
 }
