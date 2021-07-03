@@ -28,11 +28,16 @@ p {
     border-radius: 12px;
     background-color: rgb(177, 177, 177);
     margin: 0 2em;
+    min-width: 180px;
+    width: 200px;
+    box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 .stop-watch h2 {
     grid-area: 1 / 1 / span 1 / -1;
     text-align: center;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.644);
 }
 
 #display {
@@ -42,6 +47,7 @@ p {
     font-size: 2em;
     display: flex;
     justify-content: center;
+    margin: 0 0.1em;
     padding: 0.2em 0.4em;
     background-color: rgb(224, 224, 224);
 }
@@ -49,6 +55,7 @@ p {
 button {
     padding: 0.5em;
     font-weight: bold;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.644);
 }
 
 #reset {
@@ -63,10 +70,12 @@ button {
 
 #laps article {
     display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid rgba(136, 136, 136, 0.25);
     font-size: 0.35rem;
     margin-top: 1em;
     padding: 2em;
+}
 
+#laps article>p {
+    padding: 0 0.7em;
 }
